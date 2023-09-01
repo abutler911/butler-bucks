@@ -9,12 +9,23 @@
   --white: #ffffff;
 }
 
+.text-white {
+  color: var(--white);
+}
+
 body {
   font-family: "Merriweather", serif;
   color: var(--light-gray);
 }
 
+h1 {
+  font-size: 3rem;
+}
+
 /* Button Styling */
+.button-container {
+  gap: 1rem;
+}
 
 .btn {
   width: 150px;
@@ -54,7 +65,7 @@ body {
 /* Background Styling */
 
 .bg-img {
-  background-image: url("../imgs/benjamins-background.avif");
+  background-image: url("/imgs/benjamins-background.avif");
   height: 100vh;
   background-size: cover;
   background-position: center;
@@ -64,4 +75,5 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
   width: 100%;
   height: 100%;
+  padding: 20px;
 }
