@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
         {
           label: "Finance Overview in USD",
           data: [2000, 1500],
-          backgroundColor: ["rgba(200, 0, 0, 0.5)", "rgba(0, 200, 0, 0.5)"],
-          borderColor: ["rgba(200, 0, 0, 0.5)", "rgba(0, 200, 0, 0.5)"],
+          backgroundColor: ["#8ca9d3", "#8ca9d3"],
+          borderColor: ["#000", "#000"],
           borderWidth: 1,
         },
       ],
