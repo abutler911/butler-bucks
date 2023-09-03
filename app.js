@@ -1,5 +1,7 @@
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
+const session = require("express-session");
+const flash = require("connect-flash");
 const path = require("path");
 const app = express();
 const { port, MONGODB_URI } = require("./config/index");
@@ -9,11 +11,32 @@ const dashboardRoute = require("./routes/dashboard");
 
 const connectDB = require("./config/db");
 connectDB();
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // EJS and layouts
 app.use(expressLayouts);
 
 app.set("view engine", "ejs");
+
+// Express Session
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+
+// Connect Flash
+app.use(flash()); // Add this line
+
+// Global Vars for flash messages
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  next();
+});
 
 app.use("/", mainRoutes);
 app.use("/", dashboardRoute);

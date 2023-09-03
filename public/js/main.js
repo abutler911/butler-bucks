@@ -1,6 +1,18 @@
 console.log("Connected to the main.js file");
 
 document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(function () {
+    const alerts = document.querySelectorAll(".alert");
+    alerts.forEach(function (alert) {
+      alert.classList.add("fade-out");
+    });
+    setTimeout(function () {
+      alerts.forEach(function (alert) {
+        alert.style.display = "none";
+      });
+    }, 500);
+  }, 3000);
+
   const ctx = document.getElementById("myChart").getContext("2d");
 
   const myChart = new Chart(ctx, {

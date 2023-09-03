@@ -10,6 +10,10 @@
               <h2>Login to Butler Bucks</h2>
             </div>
             <div class="card-body">
+              <% if (success_msg && success_msg.length > 0) { %>
+              <div class="alert"><%= success_msg %></div>
+              <% } %>
+
               <form action="/login" method="POST">
                 <div class="mb-3">
                   <label for="email" class="form-label text-white"
