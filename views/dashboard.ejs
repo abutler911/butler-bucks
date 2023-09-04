@@ -7,6 +7,7 @@
         <div class="col-md-10">
           <div class="card bg-transparent border-0">
             <div class="card-header text-white">
+              <h4 class="username">Hello, <%= username %>!</h4>
               <h2>Welcome to Butler Bucks Dashboard</h2>
             </div>
             <div class="card-body">
@@ -14,14 +15,46 @@
               <!-- Place for charts or tables -->
               <canvas id="myChart" width="400" height="200"></canvas>
             </div>
-            <div class="card-footer text-white">
-              <!-- Place for action buttons or notifications -->
-              <button type="button" class="btn custom-btn">Refresh Data</button>
-              <button type="button" class="btn custom-btn">Debt Detail</button>
-              <button type="button" class="btn custom-btn">
-                Saving Detail
-              </button>
-              <button type="button" class="btn custom-btn">Admin</button>
+            <div
+              class="card-footer text-white d-flex flex-wrap justify-content-between align-items-center"
+            >
+              <!-- Button group for larger screens -->
+              <div class="btn-group d-none d-md-flex">
+                <button class="btn custom-btn" type="button">
+                  Refresh Data
+                </button>
+                <button class="btn custom-btn" type="button">
+                  Debt Detail
+                </button>
+                <button class="btn custom-btn" type="button">
+                  Saving Detail
+                </button>
+                <% if (isAdmin) { %>
+                <button class="btn custom-btn" type="button">Admin</button>
+                <% } %> <% if (isLoggedIn) { %>
+                <a href="/logout" class="btn custom-btn">Logout</a>
+
+                <% } %>
+              </div>
+
+              <!-- Individual buttons for smaller screens -->
+              <div class="d-flex d-md-none flex-column w-100">
+                <button class="btn custom-btn mb-2" type="button">
+                  Refresh Data
+                </button>
+                <button class="btn custom-btn mb-2" type="button">
+                  Debt Detail
+                </button>
+                <button class="btn custom-btn mb-2" type="button">
+                  Saving Detail
+                </button>
+                <% if (isAdmin) { %>
+                <button class="btn custom-btn mb-2" type="button">Admin</button>
+                <% } %> <% if (isLoggedIn) { %>
+                <a href="/logout" class="btn custom-btn mb-2">Logout</a>
+
+                <% } %>
+              </div>
             </div>
           </div>
         </div>

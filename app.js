@@ -4,7 +4,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const path = require("path");
 const app = express();
-const { port, MONGODB_URI } = require("./config/index");
+const { port } = require("./config/index");
 
 const mainRoutes = require("./routes");
 const dashboardRoute = require("./routes/dashboard");
@@ -24,11 +24,11 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
-  })
+  }),
 );
 
 // Connect Flash
-app.use(flash()); // Add this line
+app.use(flash());
 
 // Global Vars for flash messages
 app.use((req, res, next) => {

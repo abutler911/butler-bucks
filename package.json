@@ -8,7 +8,7 @@
     "dev": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andrew Butler",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -18,6 +18,7 @@
     "connect-flash": "^0.1.1",
     "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
+    "eslint-plugin-prettier": "^5.0.0",
     "express": "^4.18.2",
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.3",
@@ -27,6 +28,11 @@
     "passport-local": "^1.0.0"
   },
   "devDependencies": {
+    "eslint": "^8.48.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-n": "^16.0.2",
+    "eslint-plugin-promise": "^6.1.1",
     "nodemon": "^3.0.1"
   }
 }

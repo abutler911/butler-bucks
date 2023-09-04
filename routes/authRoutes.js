@@ -7,9 +7,36 @@ router.get("/login", (req, res) => {
   res.render("login", { title: "Login" });
 });
 
-router.post("/login", (req, res) => {
-  // Handle login logic here, for example, check user credentials
-  res.send("Logged in");
+router.post("/login", async (req, res) => {
+  // Validate user input
+  const { username, password } = req.body;
+
+  if (!username || !password) {
+    return res.status(400).send("Please enter all required fields");
+  }
+
+  // Check if the user exists
+  const user = await User.findOne({ username });
+
+  if (!user) {
+    return res.status(404).send("User not found");
+  }
+
+  // Compare the password entered by the user to the password stored in the database
+  const isPasswordMatch = await bcrypt.compare(password, user.password);
+  if (!isPasswordMatch) {
+    return res.status(401).send("Invalid password");
+  }
+
+  // Login the user
+  req.session.user = user;
+  res.redirect("/dashboard");
+});
+
+router.get("/logout", (req, res) => {
+  // Clear the user session
+  req.session.destroy();
+  res.redirect("/");
 });
 
 router.get("/register", (req, res) => {
