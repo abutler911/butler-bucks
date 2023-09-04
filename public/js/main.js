@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         alert.style.display = "none";
       });
     }, 500);
-  }, 3000);
+  }, 7000);
 
   const ctx = document.getElementById("myChart").getContext("2d");
 

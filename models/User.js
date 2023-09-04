@@ -22,6 +22,10 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  isApproved: {
+    type: Boolean,
+    default: false,
+  },
   roles: [
     {
       type: String,

@@ -53,7 +53,10 @@ app.get("/", (req, res) => {
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(err.status || 500);
-  res.render("error", { error: err });
+  res.render("error", {
+    error: err,
+    title: "Error",
+  });
 });
 
 app.listen(port, () => {
