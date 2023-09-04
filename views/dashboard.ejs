@@ -3,59 +3,70 @@
     class="overlay d-flex flex-column justify-content-center align-items-center"
   >
     <div class="container mt-5">
+      <!-- User Banner -->
+
       <div class="row justify-content-center">
         <div class="col-md-10">
           <div class="card bg-transparent border-0">
+            <div class="user-banner text-white text-center">
+              Welcome, <%= username %>!
+            </div>
             <div class="card-header text-white">
-              <h4 class="username">Hello, <%= username %>!</h4>
-              <h2>Welcome to Butler Bucks Dashboard</h2>
+              <h2 class="text-center">Welcome to Butler Bucks Dashboard</h2>
             </div>
             <div class="card-body">
               <p class="text-white">Here's an overview of your finances:</p>
               <!-- Place for charts or tables -->
               <canvas id="myChart" width="400" height="200"></canvas>
             </div>
-            <div
-              class="card-footer text-white d-flex flex-wrap justify-content-between align-items-center"
-            >
-              <!-- Button group for larger screens -->
-              <div class="btn-group d-none d-md-flex">
-                <button class="btn custom-btn" type="button">
-                  Refresh Data
-                </button>
-                <button class="btn custom-btn" type="button">
-                  Debt Detail
-                </button>
-                <button class="btn custom-btn" type="button">
-                  Saving Detail
-                </button>
-                <% if (isAdmin) { %>
-                <button class="btn custom-btn" type="button">Admin</button>
-                <% } %> <% if (isLoggedIn) { %>
-                <a href="/logout" class="btn custom-btn">Logout</a>
-
-                <% } %>
+            <!-- Control Panel -->
+            <div class="control-panel">
+              <!-- Buttons for larger screens -->
+              <div
+                class="d-none d-md-flex card-footer text-white justify-content-center align-items-center"
+              >
+                <div class="btn-group">
+                  <button class="btn custom-btn" type="button">
+                    Refresh Data
+                  </button>
+                  <button class="btn custom-btn" type="button">
+                    Debt Detail
+                  </button>
+                  <button class="btn custom-btn" type="button">
+                    Saving Detail
+                  </button>
+                  <% if (isAdmin) { %>
+                  <button class="btn custom-btn" type="button">Admin</button>
+                  <% } %> <% if (isLoggedIn) { %>
+                  <a href="/logout" class="btn custom-btn">Logout</a>
+                  <% } %>
+                </div>
               </div>
-
-              <!-- Individual buttons for smaller screens -->
-              <div class="d-flex d-md-none flex-column w-100">
-                <button class="btn custom-btn mb-2" type="button">
-                  Refresh Data
-                </button>
-                <button class="btn custom-btn mb-2" type="button">
-                  Debt Detail
-                </button>
-                <button class="btn custom-btn mb-2" type="button">
-                  Saving Detail
-                </button>
-                <% if (isAdmin) { %>
-                <button class="btn custom-btn mb-2" type="button">Admin</button>
-                <% } %> <% if (isLoggedIn) { %>
-                <a href="/logout" class="btn custom-btn mb-2">Logout</a>
-
-                <% } %>
+              <!-- Buttons for smaller screens -->
+              <div
+                class="d-md-none d-flex flex-column card-footer text-white justify-content-center align-items-center w-100"
+              >
+                <div class="btn-group flex-column">
+                  <button class="btn custom-btn mb-2" type="button">
+                    Refresh Data
+                  </button>
+                  <button class="btn custom-btn mb-2" type="button">
+                    Debt Detail
+                  </button>
+                  <button class="btn custom-btn mb-2" type="button">
+                    Saving Detail
+                  </button>
+                  <% if (isAdmin) { %>
+                  <button class="btn custom-btn mb-2" type="button">
+                    Admin
+                  </button>
+                  <% } %> <% if (isLoggedIn) { %>
+                  <a href="/logout" class="btn custom-btn mb-2">Logout</a>
+                  <% } %>
+                </div>
               </div>
             </div>
+            <!-- End of Control Panel -->
           </div>
         </div>
       </div>
