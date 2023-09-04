@@ -6,6 +6,7 @@ const path = require("path");
 const app = express();
 const { port } = require("./config/index");
 const adminRoutes = require("./routes/adminRoutes");
+const budgetRoutes = require("./routes/budgetRoutes");
 
 const mainRoutes = require("./routes");
 const dashboardRoute = require("./routes/dashboard");
@@ -42,6 +43,8 @@ app.use((req, res, next) => {
 app.use("/", mainRoutes);
 app.use("/", dashboardRoute);
 app.use("/", adminRoutes);
+app.use("/budget", budgetRoutes);
+
 // Static files
 app.use(express.static(path.join(__dirname, "public")));
 

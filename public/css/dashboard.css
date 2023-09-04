@@ -1,0 +1,14 @@
+.user-banner {
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+  padding: 10px;
+  font-size: 1.5em;
+  border-bottom: 2px solid white;
+  margin-bottom: 20px;
+}
+
+.control-panel {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}

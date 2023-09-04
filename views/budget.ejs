@@ -1,0 +1,74 @@
+<div class="container mt-5">
+  <h1 class="text-center">Budget</h1>
+
+  <% if (success_msg && success_msg.length > 0) { %>
+  <div class="alert alert-success"><%= success_msg %></div>
+  <% } %> <% if (error_msg && error_msg.length > 0) { %>
+  <div class="alert alert-danger"><%= error_msg %></div>
+  <% } %>
+
+  <h2 class="mt-4">Fixed Expenses</h2>
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Expense</th>
+        <th>Oct</th>
+        <th>Nov</th>
+        <th>Dec</th>
+        <th>Jan</th>
+        <th>Feb</th>
+        <th>Mar</th>
+        <th>Apr</th>
+        <th>May</th>
+        <th>Jun</th>
+        <th>Jul</th>
+        <th>Aug</th>
+        <th>Sep</th>
+        <th>Total Yearly</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% fixedExpenses.forEach(expense => { %>
+      <tr>
+        <td><%= expense.name %></td>
+        <td><%= expense.oct %></td>
+        <td><%= expense.nov %></td>
+        <td><%= expense.dec %></td>
+        <td><%= expense.jan %></td>
+        <td><%= expense.feb %></td>
+        <td><%= expense.mar %></td>
+        <td><%= expense.apr %></td>
+        <td><%= expense.may %></td>
+        <td><%= expense.jun %></td>
+        <td><%= expense.jul %></td>
+        <td><%= expense.aug %></td>
+        <td><%= expense.sep %></td>
+
+        <td><%= expense.total %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <h2 class="mt-4">Variable Expenses</h2>
+  <table class="table table-striped table-responsive">
+    <thead>
+      <tr>
+        <th>Expense</th>
+        <th>Oct</th>
+        <!-- ... other months ... -->
+        <th>Total Yearly</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% variableExpenses.forEach(expense => { %>
+      <tr>
+        <td><%= expense.name %></td>
+        <td><%= expense.oct %></td>
+        <!-- ... other months ... -->
+        <td><%= expense.total %></td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
