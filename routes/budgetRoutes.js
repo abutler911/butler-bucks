@@ -1,24 +1,41 @@
 const express = require("express");
 const router = express.Router();
+const Expense = require("../models/Expense");
 
-router.get("/", (req, res) => {
-  const fixedExpenses = [
-    { name: "Mortgage", oct: 2100, total: 25200 },
-    // ... other fixed expenses
-  ];
+router.get("/budget", async (req, res, next) => {
+  try {
+    const year = new Date().getFullYear();
+    const fixedExpenses = await Expense.find({ nature: "Fixed", year });
+    const variableExpenses = await Expense.find({ nature: "Variable", year });
 
-  const variableExpenses = [
-    { name: "Food", oct: 1500, total: 18000 },
-    // ... other variable expenses
-  ];
+    const fixedTotal = fixedExpenses.reduce(
+      (total, expense) => total + expense.amount,
+      0,
+    );
 
-  res.render("budget", {
-    fixedExpenses,
-    variableExpenses,
-    title: "Butler Budget",
-  });
+    const groupByMonth = (expenses) => {
+      const months = Array.from({ length: 12 }, (_, i) => []);
+      expenses.forEach((expense) => {
+        months[expense.month - 1].push(expense);
+      });
+      return months;
+    };
+
+    const groupedFixed = groupByMonth(fixedExpenses);
+    const groupedVariable = groupByMonth(variableExpenses);
+
+    res.render("budget", {
+      groupedFixed,
+      groupedVariable,
+      fixedTotal,
+      title: "Butler Budget",
+      success_msg: req.flash("success_msg"),
+      error_msg: req.flash("error_msg"),
+    });
+  } catch (err) {
+    console.error(err);
+    next(err);
+  }
 });
-
-// You can add more budget-related routes here.
 
 module.exports = router;

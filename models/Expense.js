@@ -2,11 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const expenseSchema = new Schema({
-  userId: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
-  },
   name: {
     type: String,
     required: true,
@@ -15,14 +10,37 @@ const expenseSchema = new Schema({
     type: Number,
     required: true,
   },
+  type: {
+    type: String,
+    enum: ["Projected", "Actual"],
+    default: "Projected",
+  },
+  nature: {
+    type: String,
+    enum: ["Fixed", "Variable"],
+    default: "Fixed",
+  },
   category: {
     type: String,
-    enum: ["Food", "Utilities", "Entertainment", "Health", "Other"],
+    enum: [
+      "Food",
+      "Utilities",
+      "Entertainment",
+      "Health",
+      "Transport",
+      "Other",
+    ],
     default: "Other",
   },
-  date: {
-    type: Date,
-    default: Date.now,
+  month: {
+    type: Number,
+    min: 1,
+    max: 12,
+    required: true,
+  },
+  year: {
+    type: Number,
+    required: true,
   },
 });
 

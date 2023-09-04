@@ -1,3 +1,52 @@
+/* Headings */
 h1 {
-  font-size: 3rem;
+  font-size: calc(2rem + 1.5vw); /* Responsive font-size */
+}
+
+h2 {
+  font-size: calc(1.5rem + 1.2vw);
+}
+
+h3 {
+  font-size: calc(1.2rem + 0.6vw);
+}
+
+h4 {
+  font-size: 1.1rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.9rem;
+}
+
+.main-title {
+  font-size: calc(2rem + 1.5vw);
+  color: white;
+}
+
+.sub-title {
+  font-size: calc(1rem + 0.5vw);
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* Paragraphs */
+p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Media Queries for finer control */
+@media (max-width: 768px) {
+  h1 {
+    font-size: calc(1.5rem + 1.5vw);
+  }
+
+  h2 {
+    font-size: calc(1.2rem + 1.2vw);
+  }
 }

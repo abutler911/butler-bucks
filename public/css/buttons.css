@@ -10,7 +10,16 @@
 
 /* Button Styling */
 .button-container {
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
+  width: 100%;
+  max-width: 400px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .btn {
@@ -25,37 +34,21 @@
   box-shadow: var(--btn-box-shadow);
   transition: var(--btn-transition);
   background-color: var(--orange);
+  @media (min-width: 768px) {
+    width: auto;
+  }
 }
 
 /* State changes */
-.btn:hover,
-.btn:active {
+.btn:hover {
+  cursor: pointer;
   transform: translateY(calc(var(--btn-radius) * -0.1));
-  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.1);
-}
-
-.btn:active {
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--btn-box-shadow);
+  color: var(--white);
+  background-color: var(--orange);
 }
 
 /* Extend base button class for admin and other types */
-.admin-btn,
-.btn-primary,
-.btn-secondary {
-  border: 1px solid currentColor;
-}
-
 .admin-btn {
   background-color: rgba(0, 123, 255, 0.5);
-}
-
-/* Custom button style */
-.custom-btn {
-  background-color: var(--orange);
-  color: white;
-  margin: 5px;
-}
-
-.custom-btn:hover {
-  background-color: var(--light-blue);
 }
